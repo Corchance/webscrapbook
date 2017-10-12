@@ -28,4 +28,9 @@ del "%dist%\%fn%"
 "%compressor%" d "%dist%\%fn%" manifest.json
 "%compressor%" rn "%dist%\%fn%" manifest-firefox.json manifest.json
 
+:: Folder
+set "fn=%filename%"
+del "%dist%\%fn%"
+xcopy "%src%" "%dist%\%fn%" /E /Y /R /Q /C /K
+
 pause
