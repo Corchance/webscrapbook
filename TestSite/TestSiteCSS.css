@@ -1,8 +1,10 @@
+html {
+  border: 10px solid #007777;
+}
 body {
   background-color:#777777;
 }
 
 p {
-    border: 1px solid #00cccc;
     padding: 30px;
 }
