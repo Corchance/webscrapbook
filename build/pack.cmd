@@ -31,6 +31,6 @@ del "%dist%\%fn%"
 :: Folder
 set "fn=%filename%"
 del "%dist%\%fn%"
-xcopy "%src%" "%dist%\%fn%" /E /Y /R /Q /C /K /D /S
+xcopy "%src%" "%dist%\%fn%" /E /Y /R /Q /C /K
 
 pause

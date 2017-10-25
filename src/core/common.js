@@ -127,7 +127,7 @@ if (typeof browser === "undefined" && typeof chrome !== "undefined") {
         },
       },
     },
-    
+
     tabs: {
       create(...args) {
         return new Promise((resolve, reject) => {
@@ -209,7 +209,7 @@ let scrapbook = {
 
 scrapbook.options = {
   "capture.scrapbookFolder": "WebScrapBook",
-  "capture.saveAs": "zip", // "folder", "zip", "maff", "singleHtml"
+  "capture.saveAs": "folder", // "folder", "zip", "maff", "singleHtml"
   "capture.saveInScrapbook": false,
   "capture.saveAsciiFilename": false,
   "capture.saveBeyondSelection": false,
@@ -304,9 +304,9 @@ scrapbook.saveOptions = function () {
 
 /********************************************************************
  * Cache
- * 
+ *
  * Use indexedDB for Chrome since storing Blobs is not supported.
- * 
+ *
  * Use storage API for Firefox since storing Blobs is supported, and
  * indexedDB is not available for private windows.
  *******************************************************************/
