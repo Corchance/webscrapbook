@@ -213,8 +213,8 @@ scrapbook.options = {
   "capture.saveInScrapbook": false,
   "capture.saveAsciiFilename": false,
   "capture.saveBeyondSelection": false,
-  "capture.saveFileAsHtml": false,
-  "capture.saveDataUriAsFile": false,
+  "capture.saveFileAsHtml": false,                                                      //difference between this and saveAs?
+  "capture.saveDataUriAsFile": true,
   "capture.favicon": "save", // "save", "link", "blank", "remove"
   "capture.image": "save", // "save", "link", "blank", "remove"
   "capture.imageBackground": "save", // "save", "link", "remove"
@@ -229,18 +229,18 @@ scrapbook.options = {
   "capture.style": "save", // "save", "link", "blank", "remove"
   "capture.styleInline": "save", // "save", "blank", "remove"
   "capture.rewriteCss": "url", // "none", "url"
-  "capture.script": "blank", // "save", "link", "blank", "remove"
-  "capture.scriptAnchor": "blank", // "save", "blank", "remove"
-  "capture.scriptAttr": "remove", // "save", "remove"
+  "capture.script": "save", // "save", "link", "blank", "remove"
+  "capture.scriptAnchor": "save", // "save", "blank", "remove"
+  "capture.scriptAttr": "save", // "save", "remove"
   "capture.noscript": "save", // "save", "blank", "remove"
-  "capture.base": "blank", // "save", "blank", "remove"
-  "capture.formStatus": "keep", // "keep", "reset"
+  "capture.base": "save", // "save", "blank", "remove"
+  "capture.formStatus": "keep", // "keep", "reset"                               //What it do
   "capture.removeIntegrity": true,
   "capture.recordDocumentMeta": true,
-  "capture.recordRemovedNode": false,
+  "capture.recordRemovedNode": true,
   "capture.recordRewrittenAttr": false,
-  "capture.recordSourceUri": false,
-  "capture.recordErrorUri": false,
+  "capture.recordSourceUri": true,
+  "capture.recordErrorUri": true,
   "viewer.useFileSystemApi": true,
   "viewer.viewHtz": true,
   "viewer.viewMaff": true,
@@ -507,7 +507,7 @@ scrapbook.escapeFilename = function (filename) {
 scrapbook.validateFilename = function (filename, forceAscii) {
   let fn = filename
       // control chars are bad for filename
-      .replace(/[\x00-\x1F\x7F]+|^ +/g, "")
+      .replace(/[\x00-\x1F\x7F]+|^ +/g, "")                                                  //How do control characters end up in url?
       // leading/trailing spaces and dots are not allowed in Windows
       .replace(/^\./, "_.").replace(/^ +/, "").replace(/[. ]+$/, "")
       // bad chars in most OS
