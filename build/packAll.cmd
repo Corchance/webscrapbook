@@ -30,13 +30,7 @@ del "%dist%\%fn%"
 
 :: Folder
 set "fn=%filename%"
-if exist "%dist%\%fn%" goto delete
-goto copy
-
-:delete
-del "%dist%\%fn%"
-
-:copy
-xcopy "%src%" "%dist%\%fn%" /E /Y /R /Q /C /K                                   ::Prompting?
+::xcopy "%src%" "%dist%\%fn%" /E /Y /R /Q /I
+robocopy "%src%" "%dist%\%fn%" /E
 
 pause
