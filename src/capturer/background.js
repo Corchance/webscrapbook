@@ -693,14 +693,14 @@ capturer.saveDocument = function (params) {
 
               if (options["capture.saveInScrapbook"]) {
                 targetDir = options["capture.scrapbookFolder"] + "/data";
-                filename = timeId + ".htz";
-                savePrompt = false;
+                filename = timeId + ".zip";                                             //It saves as .htz, Changed to .zip for ease
+                savePrompt = false;                                                     //For autodownloading (easier)
               } else {
                 targetDir = "";
                 filename = (data.title ? data.title : scrapbook.urlToFilename(sourceUrl));
                 filename = scrapbook.validateFilename(filename, options["capture.saveAsciiFilename"]);
-                filename += ".htz";
-                savePrompt = true;
+                filename += ".zip";                                                     //Same as 696
+                savePrompt = false;                                                     //Same as 697
               }
 
               return capturer.saveBlob({
