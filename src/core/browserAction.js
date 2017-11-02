@@ -5,11 +5,7 @@
  * @require {Object} scrapbook
  *******************************************************************/
 
- /* Inject */
-//import System.IO;
-//var outputFilePath = "/... /ChromeOut/WebURL.txt";
-//var sw : StreamWriter = new StreamWriter(outputFilePath);
- /**/
+
 document.addEventListener('DOMContentLoaded', () => {
   // load languages
   scrapbook.loadLanguages(document);
@@ -59,11 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById("captureTab").addEventListener('click', () => {
-      /* Inject */
-      //sw.WriteLine(window.location.href);
-      //sw.flush(); sw.close();
-      console.log(window.location.href);
-      /**/
       if (!currentTab) {
         capturer.invoke("captureActiveTab", {mode: "document"});
         window.close();
