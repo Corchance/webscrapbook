@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("captureTab").addEventListener('click', () => {
       if (!currentTab) {
+        /*----------------*/
+        window.alert();
+        /*----------------*/
         capturer.invoke("captureActiveTab", {mode: "document"});
         window.close();
       } else {
