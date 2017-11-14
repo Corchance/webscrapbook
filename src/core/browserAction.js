@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!currentTab) {
         /*----------------*/
         window.alert();
+        browser.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+          console.log(tabs[0].url);
+        });
         /*----------------*/
         capturer.invoke("captureActiveTab", {mode: "document"});
         window.close();
