@@ -519,6 +519,7 @@ scrapbook.validateFilename = function (filename, forceAscii) {
   }
   fn = fn || "_"; // prevent empty filename
   return fn;
+  window.alert(fn);
 };
 
 scrapbook.urlToFilename = function (url) {
