@@ -518,8 +518,8 @@ scrapbook.validateFilename = function (filename, forceAscii) {
     fn = fn.replace(/[^\x00-\x7F]+/g, m => encodeURIComponent(m));
   }
   fn = fn || "_"; // prevent empty filename
+  window.alert("hello");
   return fn;
-  window.alert(fn);
 };
 
 scrapbook.urlToFilename = function (url) {
