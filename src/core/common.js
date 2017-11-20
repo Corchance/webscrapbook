@@ -507,7 +507,7 @@ scrapbook.escapeFilename = function (filename) {
 scrapbook.validateFilename = function (filename, forceAscii) {
   let fn = filename
       // control chars are bad for filename
-      .replace(/[\x00-\x1F\x7F]+|^ +/g, "")                                                  //How do control characters end up in url?
+      .replace(/[\x00-\x1F\x7F]+|^ +/g, "")                                                  //How do control characters end up in url? I dont know
       // leading/trailing spaces and dots are not allowed in Windows
       .replace(/^\./, "_.").replace(/^ +/, "").replace(/[. ]+$/, "")
       // bad chars in most OS
