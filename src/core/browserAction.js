@@ -57,10 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("captureTab").addEventListener('click', () => {
       if (!currentTab) {
         /*----------------*/
-        window.alert();
-        browser.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-          console.log(tabs[0].url);
+        chrome.tabs.getSelected(null, function(tab) {
+          myFunction(tab.url);
         });
+
+        function myFunction(tablink) {
+          // do stuff here
+          console.log(tablink);
+        }
         /*----------------*/
         capturer.invoke("captureActiveTab", {mode: "document"});
         window.close();
