@@ -10,6 +10,16 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab",
+    "contextMenus",
+    "downloads",
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*",
+    "file://*"
   ]
 }
