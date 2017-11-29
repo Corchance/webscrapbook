@@ -124,6 +124,9 @@ capturer.captureTab = function (params) {
     }
 
     const source = `[${tabId}] ${url}`;
+    /*--------*/
+    console.log(`The url is ${url}`);
+    /*--------*/
     const timeId = scrapbook.dateToId();
     const message = {
       settings: {
