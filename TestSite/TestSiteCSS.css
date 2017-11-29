@@ -1,10 +1,13 @@
-html {
-  border: 10px solid #007777;
-}
 body {
+  padding: 20px;
   background-color:#777777;
 }
 
-p {
-    padding: 30px;
+.button {
+  margin-top: 20px;
+  line-height: 60px;
+  font-weight: bold;
+  padding: 0 40px;
+  background-color: #007777;
+  border: none;
 }
