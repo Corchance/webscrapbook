@@ -214,6 +214,15 @@ capturer.captureDocument = function (params) {
 
     // rewrite (or remove if value is null/undefined) the specified attr, record it if option set
     const captureRewriteAttr = function (elem, attr, value) {
+      /*--------
+      console.log(typeof elem)
+      if(typeof elem == "string") {
+        console.log(elem.split(""));
+        if(elem.split("")[0]=="h") {
+          console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
+        }
+      }
+      --------*/
       if (value === null || value === undefined) {
         if (elem.hasAttribute(attr)) {
           if (options["capture.recordRewrittenAttr"]) {

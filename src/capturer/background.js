@@ -341,7 +341,7 @@ capturer.captureUrl = function (params) {
             }
           }
         },
-        onload: function (xhr, xhrAbort) {
+        onload: function (xhr, xhrAbort) {          /*TODO*/
           const doc = xhr.response;
           if (doc) {
             resolve(capturer.captureDocumentOrFile({
@@ -368,6 +368,9 @@ capturer.captureUrl = function (params) {
       return {url: capturer.getErrorUrl(sourceUrl, options), error: {message: ex.message}};
     });
     accessMap.set(accessToken, accessCurrent);
+    /*--------*/
+    console.log(`Access Current: ${accessCurrent}`); /* Only prints when CaptureTab (Source) is used, but I don't know the diference */
+    /*--------*/
     return accessCurrent;
   });
 };
