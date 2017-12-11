@@ -54,7 +54,7 @@ capturer.getUniqueFilename = function (timeId, filename) {
   let count = 0;
   while (files.has(newFilenameCI)) {
     newFilename = newFilenameBase + "-" + (++count) + newFilenameExt;
-    newFilenameCI = newFilename.toLowerCase(); 
+    newFilenameCI = newFilename.toLowerCase();
   }
   files.add(newFilenameCI);
   return newFilename;
@@ -257,7 +257,7 @@ capturer.captureHeadless = function (params) {
  *     - {Object} params.options
  * @return {Promise}
  */
-capturer.captureUrl = function (params) {
+capturer.captureUrl = function (params) { /**Entire Function only Called upon CaptureTab Source, not used in regular capture tab*/
   return Promise.resolve().then(() => {
     isDebug && console.debug("call: captureUrl", params);
 
@@ -341,8 +341,11 @@ capturer.captureUrl = function (params) {
             }
           }
         },
-        onload: function (xhr, xhrAbort) {          /*TODO*/
+        onload: function (xhr, xhrAbort) {
           const doc = xhr.response;
+          /*--------*/
+          console.log(`xhr response: ${xhr.response}`);
+          /*--------*/
           if (doc) {
             resolve(capturer.captureDocumentOrFile({
               doc,
