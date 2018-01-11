@@ -537,7 +537,7 @@ scrapbook.urlToFilename = function (url) {
   } catch (ex) {}
   return name;
 };
-
+/*--------*/
 scrapbook.splitUrl = function (url) {
   let name = url, search = "", hash = "", pos;
   pos = name.indexOf("#");
@@ -551,7 +551,7 @@ scrapbook.splitUrlByAnchor = function (url) {
   let [name, search, hash] = scrapbook.splitUrl(url);
   return [name + search, hash];
 };
-
+/*--------*/
 scrapbook.filepathParts = function (filepath) {
   let pos = Math.max(filepath.lastIndexOf("/"), filepath.lastIndexOf("\\"));
   if (pos != -1) {
