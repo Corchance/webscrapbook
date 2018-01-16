@@ -154,7 +154,6 @@ capturer.captureDocumentOrFile = function (params) {
     isDebug && console.debug("call: captureDocumentOrFile");
 
     const {doc = document, refUrl, title, settings, options} = params;
-
     // if not HTML document, capture as file
     if (["text/html", "application/xhtml+xml"].indexOf(doc.contentType) === -1) {
       if (!options["capture.saveFileAsHtml"]) {
@@ -215,13 +214,13 @@ capturer.captureDocument = function (params) {
     // rewrite (or remove if value is null/undefined) the specified attr, record it if option set
     const captureRewriteAttr = function (elem, attr, value) {
       /*--------*/
-      console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
-      //if(typeof elem == "string") {
-        //console.log(elem.split(""));
-        //if(elem.split("")[0]=="h") {
-          //console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
-        //}
-      //}
+      //console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
+      /*if(typeof elem == "string") {
+        console.log(elem.split(""));
+        if(elem.split("")[0]=="h") {
+          console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
+        }
+      }*/
       /*--------*/
       if (value === null || value === undefined) {
         if (elem.hasAttribute(attr)) {
@@ -279,7 +278,9 @@ capturer.captureDocument = function (params) {
 
     const rewriteLocalLink = function (url) {
       const [urlMain, urlHash] = scrapbook.splitUrlByAnchor(url);
-
+      /*--------*/
+      console.log(`${urlMain}`)
+      /*--------*/
       // This link targets the current page
       if (urlMain === refUrl) {
         if (urlHash === "" || urlHash === "#") {
@@ -463,7 +464,7 @@ capturer.captureDocument = function (params) {
           case "save":
           default:
             favIconUrl = "about:blank";  // temporary placeholder
-            tasks[tasks.length] = 
+            tasks[tasks.length] =
             capturer.invoke("downloadFile", {
               url: settings.favIconUrl,
               refUrl: refUrl,
@@ -562,7 +563,7 @@ capturer.captureDocument = function (params) {
                 default:
                   switch (options["capture.rewriteCss"]) {
                     case "url":
-                      tasks[tasks.length] = 
+                      tasks[tasks.length] =
                       capturer.invoke("downloadFile", {
                         url: elem.href,
                         refUrl: refUrl,
@@ -576,7 +577,7 @@ capturer.captureDocument = function (params) {
                       break;
                     case "none":
                     default:
-                      tasks[tasks.length] = 
+                      tasks[tasks.length] =
                       capturer.invoke("downloadFile", {
                         url: elem.href,
                         refUrl: refUrl,
@@ -606,7 +607,7 @@ capturer.captureDocument = function (params) {
                   return;
                 case "save":
                 default:
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.href,
                     refUrl: refUrl,
