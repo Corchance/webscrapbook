@@ -53,12 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
-
+/*--------*/
     document.getElementById("captureTab").addEventListener('click', () => {
       if (!currentTab) {
-        /*----------------*/
-        /* Bookmark */
-        /*----------------*/
         capturer.invoke("captureActiveTab", {mode: "document"});
         window.close();
       } else {
@@ -67,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-
+/*--------*/
     document.getElementById("captureTabSource").addEventListener('click', () => {
       if (!currentTab) {
         capturer.invoke("captureActiveTab", {mode: "source"});
