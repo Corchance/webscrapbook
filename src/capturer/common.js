@@ -219,6 +219,7 @@ capturer.captureDocument = function (params) {
         console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
       }
       --------*/
+      console.log(purl.loc);
       if (value === null || value === undefined) {
         if (elem.hasAttribute(attr)) {
           if (options["capture.recordRewrittenAttr"]) {

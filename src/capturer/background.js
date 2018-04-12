@@ -126,8 +126,8 @@ capturer.captureTab = function (params) {
     const source = `[${tabId}] ${url}`;
     /*--------*/
     console.log(`The url is ${url}`);
-    const purl = url.split("/")[3]; //Establishes purl as a usable constant, how the profile name is found may be changed later, it feels too absolute atm
-    console.log(`Profile Name: ${purl}`);
+    //purl = url.split("/")[3]; //Establishes purl as a usable variable, how the profile name is found may be changed later, it feels too absolute atm
+    purl.loc = url.split("/")[3];
     /*--------*/
     const timeId = scrapbook.dateToId();
     const message = {
