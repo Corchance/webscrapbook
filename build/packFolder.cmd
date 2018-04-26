@@ -14,9 +14,11 @@ set "dir=%dir:~0, -1%"
 set "src=%dir%\..\src"
 set "dist=%dir%\..\dist"
 
-:: Folder
+:Folder
 set "fn=%filename%"
 ::xcopy "%src%" "%dist%\%fn%" /E /Y /R /Q /I
 robocopy "%src%" "%dist%\%fn%" /E
 
-pause
+pause >nul
+
+goto Folder

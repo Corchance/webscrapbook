@@ -41,7 +41,8 @@
       "core/background.js",
       "capturer/common.js",
       "capturer/background.js",
-      "viewer/background.js"
+      "viewer/background.js",
+      "capturer/profile.js"
     ]
   },
 

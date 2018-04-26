@@ -124,6 +124,11 @@ capturer.captureTab = function (params) {
     }
 
     const source = `[${tabId}] ${url}`;
+    /*--------*/
+    console.log(`The url is ${url}`);
+    //purl = url.split("/")[3]; //Establishes purl as a usable variable, how the profile name is found may be changed later, it feels too absolute atm
+    purl.loc = url.split("/")[3];
+    /*--------*/
     const timeId = scrapbook.dateToId();
     const message = {
       settings: {
@@ -254,7 +259,7 @@ capturer.captureHeadless = function (params) {
  *     - {Object} params.options
  * @return {Promise}
  */
-capturer.captureUrl = function (params) {
+capturer.captureUrl = function (params) { /**Entire Function only Called upon CaptureTab Source, not used in regular capture tab*/
   return Promise.resolve().then(() => {
     isDebug && console.debug("call: captureUrl", params);
 
@@ -340,6 +345,9 @@ capturer.captureUrl = function (params) {
         },
         onload: function (xhr, xhrAbort) {
           const doc = xhr.response;
+          /*--------*/
+          console.log(`xhr response: ${xhr.response}`);
+          /*--------*/
           if (doc) {
             resolve(capturer.captureDocumentOrFile({
               doc,
@@ -365,6 +373,9 @@ capturer.captureUrl = function (params) {
       return {url: capturer.getErrorUrl(sourceUrl, options), error: {message: ex.message}};
     });
     accessMap.set(accessToken, accessCurrent);
+    /*--------*/
+    console.log(`Access Current: ${accessCurrent}`); /* Only prints when CaptureTab (Source) is used, but I don't know the diference */
+    /*--------*/
     return accessCurrent;
   });
 };

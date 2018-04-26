@@ -214,6 +214,12 @@ capturer.captureDocument = function (params) {
 
     // rewrite (or remove if value is null/undefined) the specified attr, record it if option set
     const captureRewriteAttr = function (elem, attr, value) {
+      /*--------
+      if(elem..startsWith("h")) {
+        console.log(`Element: ${elem} Attribute: ${attr} Value: ${value}`);
+      }
+      --------*/
+      console.log(purl.loc);
       if (value === null || value === undefined) {
         if (elem.hasAttribute(attr)) {
           if (options["capture.recordRewrittenAttr"]) {
@@ -454,7 +460,7 @@ capturer.captureDocument = function (params) {
           case "save":
           default:
             favIconUrl = "about:blank";  // temporary placeholder
-            tasks[tasks.length] = 
+            tasks[tasks.length] =
             capturer.invoke("downloadFile", {
               url: settings.favIconUrl,
               refUrl: refUrl,
@@ -553,7 +559,7 @@ capturer.captureDocument = function (params) {
                 default:
                   switch (options["capture.rewriteCss"]) {
                     case "url":
-                      tasks[tasks.length] = 
+                      tasks[tasks.length] =
                       capturer.invoke("downloadFile", {
                         url: elem.href,
                         refUrl: refUrl,
@@ -567,7 +573,7 @@ capturer.captureDocument = function (params) {
                       break;
                     case "none":
                     default:
-                      tasks[tasks.length] = 
+                      tasks[tasks.length] =
                       capturer.invoke("downloadFile", {
                         url: elem.href,
                         refUrl: refUrl,
@@ -597,7 +603,7 @@ capturer.captureDocument = function (params) {
                   return;
                 case "save":
                 default:
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.href,
                     refUrl: refUrl,
@@ -627,7 +633,7 @@ capturer.captureDocument = function (params) {
               default:
                 switch (options["capture.rewriteCss"]) {
                   case "url":
-                    tasks[tasks.length] = 
+                    tasks[tasks.length] =
                     capturer.processCssText(elem.textContent, refUrl, settings, options).then((response) => {
                       elem.textContent = response;
                       return response;
@@ -665,7 +671,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("src")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -721,7 +727,7 @@ capturer.captureDocument = function (params) {
                   break;
                 case "save":
                 default:
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: rewriteUrl,
                     refUrl: refUrl,
@@ -780,7 +786,7 @@ capturer.captureDocument = function (params) {
                 }
                 if (frameDoc) {
                   // frame document accessible: capture the content document directly
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.captureDocumentOrFile({
                     doc: frameDoc,
                     refUrl: refUrl,
@@ -789,7 +795,7 @@ capturer.captureDocument = function (params) {
                   }).then(captureFrameCallback);
                 } else if (frameSrc.contentWindow) {
                   // frame document inaccessible: get the content document through a messaging technique, and then capture it
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("captureDocumentOrFile", {
                     refUrl: refUrl,
                     settings: frameSettings,
@@ -802,7 +808,7 @@ capturer.captureDocument = function (params) {
                     let targetUrl = scrapbook.splitUrlByAnchor(frameSrc.src)[0];
                     frameSettings.recurseChain.push(sourceUrl);
                     if (frameSettings.recurseChain.indexOf(targetUrl) === -1) {
-                      tasks[tasks.length] = 
+                      tasks[tasks.length] =
                       capturer.invoke("captureUrl", {
                         url: frameSrc.src,
                         refUrl: refUrl,
@@ -881,7 +887,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("src")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -893,7 +899,7 @@ capturer.captureDocument = function (params) {
                   });
                 }
                 if (elem.hasAttribute("srcset")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.processSrcsetText(elem.getAttribute("srcset"), refUrl, settings, options).then((response) => {
                     elem.setAttribute("srcset", response);
                     return response;
@@ -929,7 +935,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 Array.prototype.forEach.call(elem.querySelectorAll('source[srcset]'), (elem) => {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.processSrcsetText(elem.getAttribute("srcset"), refUrl, settings, options).then((response) => {
                     elem.setAttribute("srcset", response);
                     return response;
@@ -967,7 +973,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("src")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -979,7 +985,7 @@ capturer.captureDocument = function (params) {
                   });
                 }
                 Array.prototype.forEach.call(elem.querySelectorAll('source[src]'), (elem) => {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -1028,7 +1034,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("poster")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.poster,
                     refUrl: refUrl,
@@ -1040,7 +1046,7 @@ capturer.captureDocument = function (params) {
                   });
                 }
                 if (elem.hasAttribute("src")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -1052,7 +1058,7 @@ capturer.captureDocument = function (params) {
                   });
                 }
                 Array.prototype.forEach.call(elem.querySelectorAll('source[src]'), (elem) => {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -1089,7 +1095,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("src")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.src,
                     refUrl: refUrl,
@@ -1126,7 +1132,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("data")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.data,
                     refUrl: refUrl,
@@ -1164,7 +1170,7 @@ capturer.captureDocument = function (params) {
               case "save":
               default:
                 if (elem.hasAttribute("archive")) {
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.invoke("downloadFile", {
                     url: elem.getAttribute("archive"),
                     refUrl: refUrl,
@@ -1238,7 +1244,7 @@ capturer.captureDocument = function (params) {
                     return;
                   case "save":
                   default:
-                    tasks[tasks.length] = 
+                    tasks[tasks.length] =
                     capturer.invoke("downloadFile", {
                       url: elem.src,
                       refUrl: refUrl,
@@ -1337,7 +1343,7 @@ capturer.captureDocument = function (params) {
             default:
               switch (options["capture.rewriteCss"]) {
                 case "url":
-                  tasks[tasks.length] = 
+                  tasks[tasks.length] =
                   capturer.processCssText(elem.getAttribute("style"), refUrl, settings, options).then((response) => {
                     elem.setAttribute("style", response);
                     return response;

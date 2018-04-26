@@ -239,7 +239,7 @@
     "message": "Save the captured web page as a single HTML file. Referenced resources are stored as data URI and can be viewed in most modern browsers."
   },
   "OptionCaptureSaveAsZipLabel": {
-    "message": "htz package"
+    "message": "zip package"
   },
   "OptionCaptureSaveAsZipTooltip": {
     "message": "Pack a web page and its referenced resources as a .htz file using the standard zip algorithm."

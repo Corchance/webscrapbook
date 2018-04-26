@@ -53,18 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
-
+/*--------*/
     document.getElementById("captureTab").addEventListener('click', () => {
       if (!currentTab) {
-        /*----------------*/
-        function myFunction(tablink) {
-          // do stuff here
-          console.log(tablink);
-        }
-        chrome.tabs.getSelected(null, function(tab) {
-          myFunction(tab.url);
-        });
-        /*----------------*/
         capturer.invoke("captureActiveTab", {mode: "document"});
         window.close();
       } else {
@@ -73,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-
+/*--------*/
     document.getElementById("captureTabSource").addEventListener('click', () => {
       if (!currentTab) {
         capturer.invoke("captureActiveTab", {mode: "source"});
