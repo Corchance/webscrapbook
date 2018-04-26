@@ -54,7 +54,7 @@ capturer.getUniqueFilename = function (timeId, filename) {
   let count = 0;
   while (files.has(newFilenameCI)) {
     newFilename = newFilenameBase + "-" + (++count) + newFilenameExt;
-    newFilenameCI = newFilename.toLowerCase(); 
+    newFilenameCI = newFilename.toLowerCase();
   }
   files.add(newFilenameCI);
   return newFilename;
